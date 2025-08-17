@@ -282,7 +282,67 @@
 </style>
 
 
+<!-- Ajoute dans ton <head> -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+<section id="nouveautes" class="max-w-6xl mx-auto px-6 py-12 flex items-center justify-between">
+  <!-- Texte à gauche -->
+  <div class="w-1/2 pr-8">
+    <h2 class="text-3xl font-bold mb-2">À la Une — Cartes postales sonores</h2>
+    <p class="text-2xl font-bold mb-4">Écouter un lieu, c’est déjà voyager</p>
+    <p class="mb-4">
+      Une carte postale raconte une image figée, un instant capturé. Mais qu’en est-il des sons qui donnent vie à un endroit ? Les Cartes Postales Sonores prolongent ce geste familier en lui donnant une nouvelle dimension : celle de l’écoute.
+    </p>
+    <a href="" class="hover:underline font-semibold">En savoir plus</a>
+  </div>
+
+  <!-- Carrousel à droite -->
+  <div class="w-1/2">
+    <div class="swiper rounded-lg shadow-lg">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide relative">
+          <img src="img/occitanie.webp" alt="Toulouse" class="w-full h-80 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center text-white p-4 rounded-lg">
+            <h3 class="text-xl font-bold mb-2">Carte Postale Sonore — Occitània</h3>
+            <a href="map.html?tag=occitanie" class="px-4 py-2 rounded-lg shadow-md hover:underline">Découvrir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination & navigation -->
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Init Swiper -->
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+
+<!--
     <section id="nouveautes" class="max-w-6xl mx-auto px-6 py-12 justify">
       <h2 class="text-3xl font-bold mb-4">Note d’intention</h2>
       <p>La ville parle, mais rarement on l’écoute. Ses voix se mêlent, se superposent, se perdent parfois dans le bruit de fond de notre quotidien. Pourtant, ces sons façonnent notre rapport intime aux lieux : le cri du marchand de fruits sur la place du marché, la rumeur douce d’un square un dimanche après-midi, la résonance métallique d’une passerelle de gare. Ils composent une partition vivante, à la fois banale et unique, qui disparaît souvent sans laisser de trace.</p>
@@ -290,7 +350,7 @@
 Il s’agit d’arpenter la ville, micro en main, pour en extraire des fragments d’ambiances, de voix, de rythmes, et les conserver comme on conserverait une archive précieuse. Chaque enregistrement est réalisé in situ, dans un lieu précis, à un moment donné, afin de saisir son identité sonore.</p>
 <p>Au-delà du simple enregistrement, le projet se veut une cartographie sensible : les sons seront géolocalisés sur une carte interactive, accompagnés, si nécessaire, de courts textes explicatifs, traces d’histoires, indices sociaux, regards sur l’urbanisme et les usages. L’objectif est de permettre au public de voyager par l’oreille, de retrouver ou de découvrir la ville autrement.</p><p>Il ne s’agit pas seulement de documenter, mais aussi de révéler. L’oreille devient outil d’observation, la ville devient matière musicale, et chaque son, même le plus anodin, devient porteur de sens.
 Ce projet souhaite rappeler que l’identité d’une ville ne se lit pas uniquement dans ses pierres ou ses plans, mais aussi dans ses murmures.</p>
-    </section>
+    </section>-->
 
 
 
