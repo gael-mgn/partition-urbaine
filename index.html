@@ -289,9 +289,9 @@
 />
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<section id="nouveautes" class="max-w-6xl mx-auto px-6 py-12 flex items-center justify-between">
+<section id="nouveautes" class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between">
   <!-- Texte à gauche -->
-  <div class="w-1/2 pr-8">
+  <div class="w-full md:w-1/2 pr-0 md:pr-8 mb-8 md:mb-0">
     <h2 class="text-3xl font-bold mb-2">À la Une — Cartes postales sonores</h2>
     <p class="text-2xl font-bold mb-4">Écouter un lieu, c’est déjà voyager</p>
     <p class="mb-4">
@@ -301,7 +301,7 @@
   </div>
 
   <!-- Carrousel à droite -->
-  <div class="w-1/2">
+  <div class="w-full md:w-1/2">
     <div class="swiper rounded-lg shadow-lg">
       <div class="swiper-wrapper">
         <!-- Slide 1 -->
@@ -321,6 +321,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Init Swiper -->
 <script>
@@ -647,23 +648,31 @@ afficherDerniersAudios();
 
         // Fonction pour récupérer 3 catégories uniques
 function getUniqueCategories(clips) {
-  let uniqueCategories = new Set(); // Utilisation d'un Set pour garantir l'unicité
+  let uniqueCategories = new Set();
   let index = 0;
 
-  // Parcourir le tableau jusqu'à ce que nous ayons 3 catégories différentes
   while (uniqueCategories.size < 3 && index < clips.length) {
     const clip = clips[index];
-    
-    // Ajouter les catégories de l'élément actuel à uniqueCategories
-    clip.categories.forEach(category => uniqueCategories.add(category));
-    
-    // Passer à l'élément suivant
+
+    // Vérifie que clip.categories est un tableau valide
+    if (
+      Array.isArray(clip.categories) &&
+      clip.categories.length > 0 &&
+      !(clip.categories.length === 1 && clip.categories[0].trim() === '')
+    ) {
+      // Ajouter uniquement les catégories non vides (filtrées)
+      clip.categories
+        .filter(cat => cat.trim() !== '')
+        .forEach(cat => uniqueCategories.add(cat));
+    }
+
     index++;
   }
 
-  // Retourner les catégories uniques trouvées
+  console.log("ajout :", uniqueCategories);
   return Array.from(uniqueCategories);
 }
+
 
 
         function addClipsToSidebar(list){

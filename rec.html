@@ -16,6 +16,7 @@
   <!-- Tailwind via CDN pour prototype rapide -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <script src="js/collections.js"></script>
   <link rel="stylesheet" href="style/main.css">
 
   <link rel="icon" href="logo.png" type="image/x-icon">
@@ -381,7 +382,12 @@ nav a:hover::after {
 
 
 
+</style>
 
+
+
+
+<style>
 
 /* --- Dropdown --- */
 .dropdown {
@@ -478,15 +484,37 @@ nav a:hover::after {
   <div class="dropdown">
     <div class="dropdown-toggle" id="dropdownToggle">Sélectionner des catégories</div>
     <div class="dropdown-menu">
-      <label><input type="checkbox" value="souvenirs-enfance"> Souvenirs d'enfance</label>
-      <label><input type="checkbox" value="chaleur-urbaine"> Chaleur urbaine</label>
-      <label><input type="checkbox" value="mutation-urbaine"> Mutation urbaine</label>
-      <label><input type="checkbox" value="nuisances-urgences"> Nuisances et Urgences</label>
-      <label><input type="checkbox" value="musique-urbaine"> Scènes à ciel ouvert</label>
-      <label><input type="checkbox" value="nuit"> Nuit</label>
-      <label><input type="checkbox" value="marche"> Marché</label>
     </div>
   </div>
+
+  <script>
+  // Récupération de l'élément de menu déroulant
+  const dropdownMenu = document.querySelector('.dropdown-menu');
+
+  // Vide le contenu existant
+  dropdownMenu.innerHTML = '';
+
+  // Génère dynamiquement les cases à cocher
+  collections.forEach(collection => {
+    const label = document.createElement('label');
+    
+    // Tronquer la description à 50 caractères
+    const description = collection.description 
+      ? collection.description.substring(0, 100) + (collection.description.length > 100 ? "..." : "")
+      : "";
+
+    label.innerHTML = `
+      <div>
+        <input type="checkbox" value="${collection.id}"> 
+        <strong>${collection.titre}</strong><br>
+        <small style="color:#aaa;font-size:13px;">${description}</small>
+      </div>
+    `;
+    
+    dropdownMenu.appendChild(label);
+  });
+</script>
+
 
   <audio id="audioPlayback" controls></audio>
 
